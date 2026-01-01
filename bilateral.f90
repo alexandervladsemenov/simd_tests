@@ -31,7 +31,6 @@ program main
     real :: start_time, end_time
     count = command_argument_count()
     call RANDOM_SEED()
-    print *, "Number of arguments received:", count
     radius = 1
     N = 1000
     sigma = 1.0
