@@ -39,30 +39,20 @@ program main
         if (status == 0) then
             if(i == 1) then
                 call str2int(trim(arg_value), N, status)
-                if (status == 0) then
-                    ! print *, "Argument", i, ":", N
-                    ! If needed, you can read the string value into a different type
-                    ! e.g., read(arg_value, *) my_integer_var
-                end if
             end if
             if(i == 2) then
-                call str2int(trim(arg_value), radius, status)
-                if (status == 0) then
-                    ! print *, "Argument", i, ":", radius
-                    ! If needed, you can read the string value into a different type
-                    ! e.g., read(arg_value, *) my_integer_var
-                end if
+                call str2real(trim(arg_value), sigma, status)
             end if
             if(i == 3) then
                 call str2real(trim(arg_value), sigma, status)
-                if (status == 0) then
-                    ! print *, "Argument", i, ":", sigma
-                    ! If needed, you can read the string value into a different type
-                    ! e.g., read(arg_value, *) my_integer_var
-                end if
+            end if
+            if (status /= 0) then
+                print *, "Error parsing argument", i
+                STOP 1
             end if
         else
             print *, "Error getting argument", i
+            STOP 1
         end if
     end do
 
