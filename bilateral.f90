@@ -26,7 +26,7 @@ program main
     real :: start_time, end_time
     count = command_argument_count()
     call RANDOM_SEED()
-    radius = 1
+    radius = 3
     N = 1000
     sigma = 1.0
     do i = 1, count

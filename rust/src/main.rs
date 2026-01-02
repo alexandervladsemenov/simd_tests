@@ -71,6 +71,6 @@ fn main() {
 
     let duration = start.elapsed();
     println!("CPU Time: {} ms", duration.as_millis());
-    println!("Average {}", results.into_iter().sum::<f32>()/sample_size as f32);
+    println!("Average {}", results.iter().map(|&x| x as f64).sum::<f64>()/ sample_size as f64);
     println!("Total Count {}", total_count);
 }
