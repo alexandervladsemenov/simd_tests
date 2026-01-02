@@ -1,0 +1,3 @@
+- clone the repo
+- inside the repo: `mkdir build; cd build; cmake ..; make`
+- `./testBilateral_cpp_no_simd 10000 5 0.5; ./testBilateral_cpp 10000 5 0.5; ./testBilateral_fortran 10000 5 0.5`
