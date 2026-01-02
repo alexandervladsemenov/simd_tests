@@ -3,7 +3,7 @@
 #include <vector>
 #include <chrono>
 #include <cmath>
-
+#include <numeric>
 int main(int argc, char **argv) {
     int N = 10'000;
     float sigma = 1;
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
     std::cout << "CPU Time: " << duration.count() << " ms" << std::endl;
-    std::cout << "First Element " << results[0] << std::endl;
+    std::cout << "Average " << std::accumulate(results.begin(), results.end(), 0.0)/ sample_size << std::endl;
     std::cout << "Total Count " << total_count << std::endl;
     return 0;
 }

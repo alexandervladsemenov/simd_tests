@@ -1,6 +1,5 @@
 subroutine str2int(str, int, stat)
     implicit none
-    ! Arguments
     character(len = *), intent(in) :: str
     integer, intent(out) :: int
     integer, intent(out) :: stat
@@ -10,7 +9,6 @@ end subroutine str2int
 
 subroutine str2real(str, float, stat)
     implicit none
-    ! Arguments
     character(len = *), intent(in) :: str
     real, intent(out) :: float
     integer, intent(out) :: stat
@@ -19,9 +17,6 @@ subroutine str2real(str, float, stat)
 end subroutine str2real
 
 program main
-
-    ! comments
-
     implicit none
     character(len = 256) :: arg_value ! Character variable to store the argument
     integer :: N, count, i, j, status, radius, imax, imin, jmin, jmax, iimax, iimin, jjmin, jjmax
@@ -79,9 +74,8 @@ program main
         end do
     end do
 
-    ! Your code here
     CALL CPU_TIME(end_time)
     PRINT *, "CPU Time:", (end_time - start_time) * 1000
-    print *, "First Element", result(1, 1)
+    print *, "Average", sum(result)/N/N
     print *, "Total Count", total_count
 end
