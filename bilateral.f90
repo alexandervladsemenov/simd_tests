@@ -36,7 +36,7 @@ program main
                 call str2int(trim(arg_value), N, status)
             end if
             if(i == 2) then
-                call str2real(trim(arg_value), radius, status)
+                call str2int(trim(arg_value), radius, status)
             end if
             if(i == 3) then
                 call str2real(trim(arg_value), sigma, status)
