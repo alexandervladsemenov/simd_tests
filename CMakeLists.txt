@@ -9,6 +9,7 @@ set(CMAKE_Fortran_FLAGS_RELEASE  "-O3 -DNDEBUG -ffast-math -march=native ")
 set(CMAKE_CXX_FLAGS_RELEASE  "-O3 -ffast-math -DNDEBUG  -march=native ")
 add_executable(testBranch main.cpp)
 add_executable(testBilateral_cpp bilateral.cpp)
+add_executable(testBilateral_cpp_simd_improved bilateral_cpp_simd_improved.cpp)
 add_executable(testBilateral_cpp_no_simd bilateral_no_simd.cpp)
 add_executable(testBilateral_fortran bilateral.f90)
 
