@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
     }
 
     std::vector<float> array(N * N), results(N * N);
-    std::vector<float> weights((2*radius+1)*(2*radius+1));
+    std::vector<float> weights((2*radius+1)*(2*radius+1)), acc((2*radius+1)*(2*radius+1));
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0, 1.0);
@@ -41,8 +41,10 @@ int main(int argc, char **argv) {
             for (int ii = imin; ii <= imax; ++ii) {
                 for (int jj = jmin; jj <= jmax; ++jj) {
                     int index_local = N * ii + jj;
-                    weights[idx++] = std::exp(-(array[index_global] - array[index_local]) *
+                    weights[idx] = std::exp(-(array[index_global] - array[index_local]) *
                                                (array[index_global] - array[index_local]) / sigma / sigma / 2);
+                    acc[idx] = weights[idx] * array[index_local];
+                    idx ++;
                 }
             }
             results[index_global] = 0;
@@ -51,10 +53,9 @@ int main(int argc, char **argv) {
             for (int ii = imin; ii <= imax; ++ii) {
                 for (int jj = jmin; jj <= jmax; ++jj) {
                     total_count++;
-                    int index_local = N * ii + jj;
-                    float w = weights[idx++];
-                    weight += w;
-                    results[index_global] += array[index_local] * w;
+                    weight += weights[idx];
+                    results[index_global] += acc[idx];
+                    idx ++;
                 }
             }
             results[index_global] /= weight;
