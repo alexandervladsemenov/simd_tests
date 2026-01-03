@@ -6,5 +6,7 @@ echo "\nC++ with improved SIMD exponent"
 time build/testBilateral_cpp_simd_improved 10000 5 0.5
 echo "\nFortran"
 time build/testBilateral_fortran 10000 5 0.5
-echo "\nRust"
-time build/testBilateral_rust 10000 5 0.5
+echo "\nRust Slow"
+time build/testBilateral_rust_slow 10000 5 0.5
+echo "\nRust Fast"
+time build/testBilateral_rust_fast 10000 5 0.5

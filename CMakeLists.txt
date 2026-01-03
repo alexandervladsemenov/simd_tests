@@ -15,11 +15,13 @@ add_executable(testBilateral_fortran bilateral.f90)
 
 # Rust binary
 set(RUST_TARGET_DIR ${CMAKE_CURRENT_SOURCE_DIR}/rust/target/release)
-set(RUST_BINARY ${CMAKE_BINARY_DIR}/testBilateral_rust)
+set(RUST_BINARY_SLOW ${CMAKE_BINARY_DIR}/testBilateral_rust_slow)
+set(RUST_BINARY_FAST ${CMAKE_BINARY_DIR}/testBilateral_rust_fast)
 
 add_custom_target(testBilateral_rust ALL
-        COMMAND cargo build --release --manifest-path=${CMAKE_CURRENT_SOURCE_DIR}/rust/Cargo.toml
-        COMMAND ${CMAKE_COMMAND} -E copy ${RUST_TARGET_DIR}/bilateral_rust ${RUST_BINARY}
+        COMMAND cargo build --bins --release --manifest-path=${CMAKE_CURRENT_SOURCE_DIR}/rust/Cargo.toml
+        COMMAND ${CMAKE_COMMAND} -E copy ${RUST_TARGET_DIR}/bilateralRust_fast ${RUST_BINARY_FAST}
+        COMMAND ${CMAKE_COMMAND} -E copy ${RUST_TARGET_DIR}/bilateralRust_slow ${RUST_BINARY_SLOW}
         COMMENT "Building Rust benchmark"
         VERBATIM
 )
